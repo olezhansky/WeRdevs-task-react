@@ -1,0 +1,33 @@
+.Wrapper {
+  min-height: calc(100vh - 160px);
+  background: url('../../assets/img/background.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.ContentBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.Title {
+  max-width: 380px;
+  text-align: right;
+  color: #fdd000;
+  padding: 200px 50px 0px 0px;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+.Text {
+  max-width: 380px;
+  text-align: right;
+  color: #dfdfdf;
+  font-size: 24px;
+  line-height: 32px;
+  padding: 50px 50px 0px 0px;
+  letter-spacing: 1.2px;
+}
