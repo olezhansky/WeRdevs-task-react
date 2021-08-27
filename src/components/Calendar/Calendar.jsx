@@ -286,7 +286,7 @@ const Calendar = () =>  {
 
     const [state, setState] = useState({
         date: new Date(),
-        years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+        // years: [2021],
         monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
         weekDayNames: ['S', 'M', 'T', 'W' , 'T', 'F', 'S'],
         currentDate: new Date(),
@@ -348,10 +348,6 @@ const Calendar = () =>  {
         test = state.monthNames[11]  
     }
     
-
-
-
-
 
         const monthData = calendar.getMonthData(getYear(), getMonth());
         console.log(monthData);
