@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 // import React, { useState } from 'react';
 // import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 // import styles from './Calendar.module.scss';
@@ -275,18 +276,148 @@
 //     }
 // }
 
+// import React, {useState} from 'react';
+// import classnames from 'classnames';
+
+// import * as calendar from './calendar';
+
+// import './Calendar.scss';
+
+// const Calendar = () =>  {
+
+//     const [state, setState] = useState({
+//         date: new Date(),
+//         years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+//         monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
+//         weekDayNames: ['S', 'M', 'T', 'W' , 'T', 'F', 'S'],
+//         currentDate: new Date(),
+//         selectedDate: null,
+//     })
+
+//     const getYear = () => {
+//         return state.date.getFullYear();
+//     }
+//     const getMonth = () => {
+//         return state.date.getMonth();
+//     }
+//     const getDate = () => {
+//         return state.date.getDate();
+//     }
+
+//     const handlePrevMonthButtonClick = () => {
+//         const date = new Date(getYear(), getMonth() - 1);
+//         setState({...state, date: date})
+//     };
+
+//     const handleNextMonthButtonClick = () => {
+//         const date = new Date(getYear(), getMonth() + 1);
+//         setState({...state, date: date})
+//     };
+
+
+//     const handleDayClick = date => {
+//         this.setState({ selectedDate: date });
+        
+//         this.props.onChange(date);
+//     };
+
+//     let test = ''
+
+//     if (getMonth() === 0) {
+//         test = state.monthNames[0]
+//     } else if (getMonth() === 1) {
+//         test = state.monthNames[1]
+//     } else if (getMonth() === 2) {
+//         test = state.monthNames[2]
+//     } else if (getMonth() === 3) {
+//         test = state.monthNames[3] 
+//     } else if (getMonth() === 4) {
+//         test = state.monthNames[4] 
+//     } else if (getMonth() === 5) {
+//         test = state.monthNames[5]  
+//     } else if (getMonth() === 6) {
+//         test = state.monthNames[6]  
+//     } else if (getMonth() === 7) {
+//         test = state.monthNames[7] 
+//     } else if (getMonth() === 8) {
+//         test = state.monthNames[8] 
+//     } else if (getMonth() === 9) {
+//         test = state.monthNames[9] 
+//     } else if (getMonth() === 10) {
+//         test = state.monthNames[10] 
+//     } else if (getMonth() === 11) {
+//         test = state.monthNames[11]  
+//     }
+    
+
+
+
+
+
+//         const monthData = calendar.getMonthData(getYear(), getMonth());
+//         console.log(monthData);
+//         return (
+//             <div className="calendar">
+//                 <header>
+//                     <button onClick={handlePrevMonthButtonClick}>{'<'}</button>
+
+//                     <span>{test}</span>
+//                     <span>{getYear()}</span>
+
+//                     <button onClick={handleNextMonthButtonClick}>{'>'}</button>
+//                 </header>
+
+//                 <table>
+//                     <thead>
+//                         <tr>
+//                             {state.weekDayNames.map(name =>
+//                             {
+//                                 console.log(name);
+//                                 return <th key={name}>{name}</th>   
+//                             }
+                                 
+//                             )}
+//                         </tr>
+//                     </thead>
+//                         <tbody>
+//                         {monthData.map((week, index) => {
+//                             console.log(week);
+//                             return <tr key={index} className="week">
+//                                 {week.map((date, index) => {
+//                                     console.log(date);
+//                                     if (date) {
+//                                         return  <td
+//                                         key={index}
+//                                         className={classnames('day', {
+//                                             'today': calendar.areEqual(date, state.currentDate),
+//                                             'selected': calendar.areEqual(date, state.selectedDate)
+//                                         })}
+//                                         onClick={() => this.handleDayClick(date)}
+//                                     >{date.getDate()}</td>
+//                                     }
+//                                 })}
+//                             </tr> 
+//                         })}
+//                     </tbody>
+//                 </table>
+//             </div>
+//         );
+// }
+
+// export default Calendar;
+
 import React, {useState} from 'react';
 import classnames from 'classnames';
-
+import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import * as calendar from './calendar';
-
+import styles from './Calendar.module.scss'
 import './Calendar.scss';
 
 const Calendar = () =>  {
 
     const [state, setState] = useState({
         date: new Date(),
-        // years: [2021],
+        years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
         monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
         weekDayNames: ['S', 'M', 'T', 'W' , 'T', 'F', 'S'],
         currentDate: new Date(),
@@ -314,90 +445,63 @@ const Calendar = () =>  {
     };
 
 
-    const handleDayClick = date => {
-        this.setState({ selectedDate: date });
+    const handleDayClick = (date) => {
+
+        setState({
+            ...state,
+            selectedDate: date
+        })
         
-        this.props.onChange(date);
     };
 
-    let test = ''
+    let monthName = '';
 
-    if (getMonth() === 0) {
-        test = state.monthNames[0]
-    } else if (getMonth() === 1) {
-        test = state.monthNames[1]
-    } else if (getMonth() === 2) {
-        test = state.monthNames[2]
-    } else if (getMonth() === 3) {
-        test = state.monthNames[3] 
-    } else if (getMonth() === 4) {
-        test = state.monthNames[4] 
-    } else if (getMonth() === 5) {
-        test = state.monthNames[5]  
-    } else if (getMonth() === 6) {
-        test = state.monthNames[6]  
-    } else if (getMonth() === 7) {
-        test = state.monthNames[7] 
-    } else if (getMonth() === 8) {
-        test = state.monthNames[8] 
-    } else if (getMonth() === 9) {
-        test = state.monthNames[9] 
-    } else if (getMonth() === 10) {
-        test = state.monthNames[10] 
-    } else if (getMonth() === 11) {
-        test = state.monthNames[11]  
+    for (let i = 0; i < state.monthNames.length; i++) {
+        if (getMonth() === i) {
+            monthName = state.monthNames[i]
+        }
     }
-    
 
-        const monthData = calendar.getMonthData(getYear(), getMonth());
-        console.log(monthData);
-        return (
-            <div className="calendar">
-                <header>
-                    <button onClick={handlePrevMonthButtonClick}>{'<'}</button>
+    const monthData = calendar.getMonthData(getYear(), getMonth());
 
-                    <span>{test}</span>
-                    <span>{getYear()}</span>
-
-                    <button onClick={handleNextMonthButtonClick}>{'>'}</button>
-                </header>
-
-                <table>
-                    <thead>
-                        <tr>
-                            {state.weekDayNames.map(name =>
-                            {
-                                console.log(name);
-                                return <th key={name}>{name}</th>   
-                            }
-                                 
-                            )}
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {monthData.map((week, index) => {
-                            console.log(week);
-                            return <tr key={index} className="week">
-                                {week.map((date, index) => date ?
-                                
-                                    <td
-                                        key={index}
-                                        className={classnames('day', {
-                                            'today': calendar.areEqual(date, state.currentDate),
-                                            'selected': calendar.areEqual(date, state.selectedDate)
-                                        })}
-                                        onClick={() => this.handleDayClick(date)}
-                                    >{date.getDate()}</td>
-                                    :
-                                    <td key={index} />
-                                )}
-                            </tr> 
+    return (
+        <div className={styles.Wrapper}>
+            <div className={styles.Container}>
+                <div className={styles.Months}>
+                    <div onClick={handlePrevMonthButtonClick}><GoChevronLeft style={{color: '#DFDFDF', fontSize: '20px', cursor: 'pointer'}} /></div>
+                    <div className={styles.MonthsText}>{monthName} {getYear()}</div>
+                    <div onClick={handleNextMonthButtonClick}><GoChevronRight style={{color: '#DFDFDF', fontSize: '20px', cursor: 'pointer'}}/></div>
+                </div>
+                <ul className={styles.CalendarContainer}>
+                    {monthData.map((week, index) => {
+                            return <li key={index} className={styles.Week}>
+                                {week.map((date, index) => {
+                                    if (date) {
+                                        return  (
+                                            <p
+                                            key={index}
+                                            className={classnames('day', {
+                                                'today': calendar.areEqual(date, state.currentDate),
+                                                'selected': calendar.areEqual(date, state.selectedDate)
+                                            })}
+                                            onClick={() => handleDayClick(date)}
+                                            >{date.getDate()}</p>
+                                        )
+                                    } else {
+                                        return <p>{''}</p> 
+                                    }
+                                })}
+                            </li> 
                         })}
-                    </tbody>
-                </table>
+                </ul>
+                <div className={styles.DaysOfTheWeek}>
+                    {state.weekDayNames.map((dayOftheWeek) => {
+                        return <span className={styles.DayOftheWeek}>{dayOftheWeek}</span>
+                    })}
+                </div>
             </div>
-        );
+        </div>
+    );
 }
 
 export default Calendar;

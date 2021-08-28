@@ -1,52 +1,24 @@
-.calendar header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-
-.calendar header button,
-.calendar header select {
-  margin: 0 4px;
-}
-
-.calendar table {
-  table-layout: fixed;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: auto;
-}
-
-.calendar th {
-  vertical-align: middle;
-  text-align: center;
-  height: 36px;
-}
-
-.calendar .day {
-  padding: 4px 8px;
-  vertical-align: middle;
-  text-align: center;
-  border: 2px solid transparent;
-}
-
-.calendar .day:hover {
-  background-color: #eaeaea;
+.day {
+  color: #dfdfdf;
+  font-size: 16px;
+  line-height: 22px;
   cursor: pointer;
+  padding: 2px 5px;
+  border: 1px solid transparent;
+}
+.day:hover {
+  border: 1px solid #fdd000;
 }
 
-.calendar .day.selected {
-  border: 2px solid dodgerblue;
+.day.selected {
+  border: 1px solid #fdd000;
 }
 
-.calendar .day.today {
-  background-color: dodgerblue;
-  color: white;
+.day.today {
+  background-color: #fdd000;
+  color: #272829;
 }
 
-.calendar .day.today:hover {
-  background-color: #0081ff;
-}
-
-.calendar .day.today.selected {
-  border: 2px solid lightgray;
+.day.today:hover {
+  background-color: #fdd000;
 }

@@ -1,13 +1,10 @@
 .Wrapper {
   background-color: #272829;
   min-height: calc(100vh - 160px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 .Container {
   max-width: 400px;
+  margin: 25% auto;
 }
 .Months {
   width: 100%;
@@ -29,9 +26,8 @@
   line-height: 20px;
   color: #dfdfdf;
 }
-.Days {
+.CalendarContainer {
   margin-top: 40px;
-  display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 30px;
 }
@@ -39,6 +35,7 @@
   margin-top: 50px;
   position: relative;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   &::before {
     content: '';
@@ -60,6 +57,14 @@
   }
 }
 .DayOftheWeek {
-  // margin: 0 22px;
   color: #dfdfdf;
+  padding: 2px 5px;
+}
+
+.Week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 30px;
+  justify-items: center;
+  margin-bottom: 30px;
 }
