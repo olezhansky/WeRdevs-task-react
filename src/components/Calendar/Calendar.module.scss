@@ -60,11 +60,3 @@
   color: #dfdfdf;
   padding: 2px 5px;
 }
-
-.Week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-column-gap: 30px;
-  justify-items: center;
-  margin-bottom: 30px;
-}
