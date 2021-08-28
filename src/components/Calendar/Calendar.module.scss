@@ -1,11 +1,14 @@
 .Wrapper {
   background-color: #272829;
-  min-height: calc(100vh - 140px);
+  height: calc(100vh - 100px);
   padding: 0 15px;
 }
 .Container {
-  max-width: 400px;
-  margin: 25% auto;
+  max-width: 300px;
+  margin: 35% auto;
+  @media (max-width: 1280px) {
+    margin: 15% auto;
+  }
 }
 .Months {
   width: 100%;
