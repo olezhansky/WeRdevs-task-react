@@ -3,54 +3,51 @@ import React, {useState} from 'react';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import * as calendar from './calendar';
 import Week from './Week/Week';
+import Modal from '../Modal/Modal';
+import { useSelector, useDispatch } from 'react-redux'
+import { prevMonthAction,nextMonthAction, selectDayAction } from '../../store/actions';
 import styles from './Calendar.module.scss'
 
 const Calendar = () =>  {
 
-    const [state, setState] = useState({
-        date: new Date(),
-        years: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
-        monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
-        weekDayNames: ['S', 'M', 'T', 'W' , 'T', 'F', 'S'],
-        currentDate: new Date(),
-        selectedDate: null,
-    })
+    const [modalActive, setModalActive] = useState(false);
+
+    const dispatch = useDispatch()
+
+    const date = useSelector((state) => state.date);
+    const dayOfWeek = useSelector((state) => state.dayOfWeek);
+    const currentDate = useSelector((state) => state.currentDate);
+    const selectedDate = useSelector((state) => state.selectedDate);
+    const months = useSelector((state) => state.months);
 
     const getYear = () => {
-        return state.date.getFullYear();
+        return date.getFullYear();
     }
     const getMonth = () => {
-        return state.date.getMonth();
+        return date.getMonth();
     }
 
     const handlePrevMonthButtonClick = () => {
         const date = new Date(getYear(), getMonth() - 1);
-        setState({...state, date: date})
+        dispatch(prevMonthAction(date))
     };
 
     const handleNextMonthButtonClick = () => {
         const date = new Date(getYear(), getMonth() + 1);
-        setState({...state, date: date})
+        dispatch(nextMonthAction(date))
     };
 
 
     const handleDayClick = (date) => {
-        console.log(date.getDate())
-        console.log(date.toLocaleString('en-us', { month: 'long' }))
-        let days = ['Sunday','Monday','Tuesday','Wednesday','Thrusday','Friday','Saturday'];
-        console.log(days[date.getDay()])
-        setState({
-            ...state,
-            selectedDate: date
-        })
-        
+        setModalActive(true)
+        dispatch(selectDayAction(date))  
     };
 
     let monthName = '';
 
-    for (let i = 0; i < state.monthNames.length; i++) {
+    for (let i = 0; i < months.length; i++) {
         if (getMonth() === i) {
-            monthName = state.monthNames[i]
+            monthName = months[i]
         }
     }
 
@@ -66,15 +63,22 @@ const Calendar = () =>  {
                 </div>
                 <ul className={styles.CalendarContainer}>
                     {monthData.map((week, index) => {
-                        return <Week week={week} key={index} dayClick={handleDayClick} state={state} />
+                        return <Week 
+                                    week={week} 
+                                    key={index} 
+                                    dayClick={handleDayClick} 
+                                    currentDate={currentDate}
+                                    selectedDate={selectedDate} 
+                                />
                     })}
                 </ul>
                 <div className={styles.DaysOfTheWeek}>
-                    {state.weekDayNames.map((dayOftheWeek, index) => {
-                        return <span key={index}className={styles.DayOftheWeek}>{dayOftheWeek}</span>
+                    {dayOfWeek.map((dayOftheWeek, index) => {
+                        return <span key={index} className={styles.DayOftheWeek}>{dayOftheWeek}</span>
                     })}
                 </div>
             </div>
+            <Modal modalActive={modalActive} setModalActive={setModalActive} selectedDate={selectedDate}/>
         </div>
     );
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import styles from './Week.module.scss';
 import './Week.scss'
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Week = ({week, dayClick, state}) => {
-
-    const areEqual = (a, b) => {
+const Week = ({week, dayClick, currentDate, selectedDate }) => {
+    
+    const todayHandle = (a, b) => {
         if (!a || !b) return false;
         return (
           a.getFullYear() === b.getFullYear() &&
@@ -22,8 +23,8 @@ const Week = ({week, dayClick, state}) => {
                         <p
                             key={day.getTime()}
                             className={classnames('day', {
-                                'today': areEqual(day, state.currentDate),
-                                'selected': areEqual(day, state.selectedDate)
+                                'today': todayHandle(day, currentDate),
+                                'selected': todayHandle(day, selectedDate)
                             })}
                             onClick={() => dayClick(day)}
                         >
@@ -37,5 +38,10 @@ const Week = ({week, dayClick, state}) => {
         </li> 
     )
 }
+
+Week.propTypes = {
+    week: PropTypes.array,
+    dayClick: PropTypes.func,
+};
 
 export default Week;

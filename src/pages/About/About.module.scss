@@ -1,17 +1,18 @@
 .Wrapper {
-    max-width: 900px;
-    margin: 0 auto;
+  max-width: 1160px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 .Title {
-    font-size: 20px;
-    line-height: 22px;
-    font-weight: 700;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 700;
 }
 .Text {
-    margin-top: 40px;
-    font-size: 14px;
-    color: #3d3d3d;
-    p {
-        margin-bottom: 20px;
-    }
+  margin-top: 40px;
+  font-size: 14px;
+  color: #3d3d3d;
+  p {
+    margin-bottom: 20px;
+  }
 }

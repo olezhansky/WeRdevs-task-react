@@ -4,4 +4,8 @@
   grid-column-gap: 30px;
   justify-items: center;
   margin-bottom: 30px;
+  @media (max-width: 1024px) {
+    grid-column-gap: 10px;
+    margin-bottom: 10px;
+  }
 }

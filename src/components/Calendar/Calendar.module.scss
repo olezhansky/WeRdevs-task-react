@@ -1,6 +1,7 @@
 .Wrapper {
   background-color: #272829;
-  min-height: calc(100vh - 160px);
+  min-height: calc(100vh - 140px);
+  padding: 0 15px;
 }
 .Container {
   max-width: 400px;
@@ -28,8 +29,9 @@
 }
 .CalendarContainer {
   margin-top: 40px;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 30px;
+  @media (max-width: 1024px) {
+    grid-gap: 10px;
+  }
 }
 .DaysOfTheWeek {
   margin-top: 50px;
