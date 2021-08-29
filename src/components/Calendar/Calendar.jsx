@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, {useState} from 'react';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import * as calendar from './calendar';
@@ -20,49 +19,45 @@ const Calendar = () =>  {
     const selectedDate = useSelector((state) => state.selectedDate);
     const months = useSelector((state) => state.months);
 
-    const getYear = () => {
-        return date.getFullYear();
-    }
-    const getMonth = () => {
-        return date.getMonth();
-    }
-
-    const handlePrevMonthButtonClick = () => {
-        const date = new Date(getYear(), getMonth() - 1);
-        dispatch(prevMonthAction(date))
+    const handlePrevMonth = () => {
+        dispatch(prevMonthAction());
     };
 
-    const handleNextMonthButtonClick = () => {
-        const date = new Date(getYear(), getMonth() + 1);
-        dispatch(nextMonthAction(date))
+    const handleNextMonth = () => {
+        dispatch(nextMonthAction());
     };
-
 
     const handleDayClick = (date) => {
-        setModalActive(true)
-        dispatch(selectDayAction(date))  
+        setModalActive(true);
+        dispatch(selectDayAction(date));
     };
 
     let monthName = '';
 
     for (let i = 0; i < months.length; i++) {
-        if (getMonth() === i) {
-            monthName = months[i]
+        if (date.getMonth() === i) {
+            monthName = months[i];
         }
     }
 
-    const monthData = calendar.getMonthData(getYear(), getMonth());
+    const monthsData = calendar.getMonthData(date.getFullYear(), date.getMonth());
 
     return (
         <div className={styles.Wrapper}>
             <div className={styles.Container}>
                 <div className={styles.Months}>
-                    <div onClick={handlePrevMonthButtonClick}><GoChevronLeft style={{color: '#DFDFDF', fontSize: '20px', cursor: 'pointer'}} /></div>
-                    <div className={styles.MonthsText}>{monthName} {getYear()}</div>
-                    <div onClick={handleNextMonthButtonClick}><GoChevronRight style={{color: '#DFDFDF', fontSize: '20px', cursor: 'pointer'}}/></div>
+                    <div onClick={handlePrevMonth}>
+                        <GoChevronLeft style={{color: '#DFDFDF', fontSize: '20px', cursor: 'pointer'}} />
+                    </div>
+                    <div className={styles.MonthsText}>
+                        {monthName} {date.getFullYear()}
+                    </div>
+                    <div onClick={handleNextMonth}>
+                        <GoChevronRight style={{color: '#DFDFDF', fontSize: '20px', cursor: 'pointer'}}/>
+                    </div>
                 </div>
                 <ul className={styles.CalendarContainer}>
-                    {monthData.map((week, index) => {
+                    {monthsData.map((week, index) => {
                         return <Week 
                                     week={week} 
                                     key={index} 

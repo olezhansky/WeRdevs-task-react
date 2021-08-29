@@ -7,35 +7,45 @@ import styles from './Modal.module.scss';
 const Modal = ({ modalActive, setModalActive, selectedDate }) => {
     const dayOfWeekFullName = useSelector((state) => state.dayOfWeekFullName);
 
-    if (!selectedDate) return null
+    if (!selectedDate) return null;
 
     const handleClose = () => {
         setModalActive(false);
     };
 
     const onChangeHandle = () => {
-        console.log('onChange')
+        console.log('onChange');
     }
 
     return (
-    <div
-        className={modalActive ? styles.Modal_active : styles.Modal}
-        onClick={handleClose}
-    >
-        <div className={styles.ModalContent} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.ButtonClose}>
-                <button  onClick={handleClose}><VscClose style={{fontSize: '16px'}}/></button>
+        <div
+            className={modalActive ? styles.ModalActive : styles.Modal}
+            onClick={handleClose}
+        >
+            <div className={styles.ModalContent} onClick={(e) => e.stopPropagation()}>
+                <div className={styles.ButtonClose}>
+                    <button  onClick={handleClose}>
+                        <VscClose style={{fontSize: '16px'}}/>
+                    </button>
+                </div>
+                <form className={styles.Form}>
+                    <label>Month
+                        <input 
+                            type="text" 
+                            onChange={onChangeHandle} 
+                            value={selectedDate.toLocaleString('en-us', { month: 'long' })} 
+                        />
+                    </label>
+                    <label>Day
+                        <input 
+                            type="text" 
+                            onChange={onChangeHandle} 
+                            value={`${selectedDate.getDate()}th ${dayOfWeekFullName[selectedDate.getDay()]}` }
+                        />
+                    </label>
+                </form>
             </div>
-            <form className={styles.Form}>
-                <label>Month
-                <input type="text" onChange={onChangeHandle} value={selectedDate.toLocaleString('en-us', { month: 'long' })} />
-                </label>
-                <label>Day
-                <input type="text" onChange={onChangeHandle} value={`${selectedDate.getDate()}th ${dayOfWeekFullName[selectedDate.getDay()]}` }/>
-                </label>
-            </form>
         </div>
-    </div>
     );
 };
 

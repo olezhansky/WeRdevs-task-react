@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Week.module.scss';
-import './Week.scss'
+import './Week.scss';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -22,9 +22,9 @@ const Week = ({week, dayClick, currentDate, selectedDate }) => {
                     return  (
                         <p
                             key={day.getTime()}
-                            className={classnames('day', {
-                                'today': todayHandle(day, currentDate),
-                                'selected': todayHandle(day, selectedDate)
+                            className={classnames('Day', {
+                                'Today': todayHandle(day, currentDate),
+                                'Selected': todayHandle(day, selectedDate)
                             })}
                             onClick={() => dayClick(day)}
                         >

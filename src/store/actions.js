@@ -1,16 +1,14 @@
-import { PREV_MONTH, NEXT_MONTH, SELECT_DAY_ACTION } from './types';
+import { PREV_MONTH, NEXT_MONTH, SELECT_DAY } from './types';
 
-export const prevMonthAction = (date) => ({
+export const prevMonthAction = () => ({
   type: PREV_MONTH,
-  payload: date,
 });
 
-export const nextMonthAction = (date) => ({
+export const nextMonthAction = () => ({
   type: NEXT_MONTH,
-  payload: date,
 });
 
 export const selectDayAction = (date) => ({
-  type: SELECT_DAY_ACTION,
+  type: SELECT_DAY,
   payload: date,
 });

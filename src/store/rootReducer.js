@@ -1,4 +1,4 @@
-import { PREV_MONTH, NEXT_MONTH, SELECT_DAY_ACTION } from './types';
+import { PREV_MONTH, NEXT_MONTH, SELECT_DAY } from './types';
 
 const initialState = {
   date: new Date(),
@@ -35,14 +35,14 @@ export const rootReducer = (state = initialState, action) => {
     case PREV_MONTH:
       return {
         ...state,
-        date: action.payload,
+        date: new Date(state.date.getFullYear(), state.date.getMonth() - 1)
       };
     case NEXT_MONTH:
       return {
         ...state,
-        date: action.payload,
+        date: new Date(state.date.getFullYear(), state.date.getMonth() + 1)
       };
-    case SELECT_DAY_ACTION:
+    case SELECT_DAY:
       return {
         ...state,
         selectedDate: action.payload,

@@ -26,7 +26,7 @@ const About = () => {
                     to imagine that there was a version in use far before the age of Letraset.
                 </p>
                 <p>
-                    McClintock wrote to Before & After to explain his discovery:<br />
+                    McClintock wrote to Before &#38; After to explain his discovery:<br />
                     “What I find remarkable is that this text has 
                     been the industry's standard dummy text ever since some printer in the 1500s took a galley 
                     of type and scrambled it to make a type specimen book; it has survived not only four centuries 

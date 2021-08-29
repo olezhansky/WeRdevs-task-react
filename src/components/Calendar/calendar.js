@@ -1,6 +1,6 @@
 const DAYS_IN_WEEK = 7;
 const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-const WEEK_DAYS_FROM_MONDAY = [0, 1, 2, 3, 4, 5, 6];
+const WEEK_DAYS_FROM_SUNDAY = [0, 1, 2, 3, 4, 5, 6];
 const monthFebruary = 1;
 
 export function isLeapYear(year) {
@@ -21,7 +21,7 @@ export function getDaysInMonth(date) {
 
 export function getDayOfWeek(date) {
   const dayOfWeek = date.getDay();
-  return WEEK_DAYS_FROM_MONDAY[dayOfWeek];
+  return WEEK_DAYS_FROM_SUNDAY[dayOfWeek];
 }
 
 export function getMonthData(year, month) {
@@ -42,6 +42,5 @@ export function getMonthData(year, month) {
       }
     }
   }
-
   return result;
 }
