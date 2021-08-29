@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
-import * as calendar from './calendar';
+import * as calendarLogic from './calendarLogic';
 import Week from './Week/Week';
-import Modal from '../Modal/Modal';
+import Modal from '../../Modal/Modal';
 import { useSelector, useDispatch } from 'react-redux'
-import { prevMonthAction,nextMonthAction, selectDayAction } from '../../store/actions';
+import { prevMonthAction,nextMonthAction, selectDayAction } from '../../../store/actions';
 import styles from './Calendar.module.scss'
 
 const Calendar = () =>  {
@@ -40,8 +40,8 @@ const Calendar = () =>  {
         }
     }
 
-    const monthsData = calendar.getMonthData(date.getFullYear(), date.getMonth());
-
+    const monthsData = calendarLogic.getMonthData(date.getFullYear(), date.getMonth());
+    
     return (
         <div className={styles.Wrapper}>
             <div className={styles.Container}>
@@ -65,7 +65,8 @@ const Calendar = () =>  {
                                     currentDate={currentDate}
                                     selectedDate={selectedDate} 
                                 />
-                    })}
+                        })
+                    }
                 </ul>
                 <div className={styles.DaysOfTheWeek}>
                     {dayOfWeek.map((dayOftheWeek, index) => {

@@ -14,10 +14,10 @@ const Week = ({week, dayClick, currentDate, selectedDate }) => {
           a.getDate() === b.getDate()
         );
     }
-
+    
     return (
         <li className={styles.Week}>
-            {week.map((day, index) => { 
+            {week.map((day, index) => {       
                 if (day) {
                     return  (
                         <p

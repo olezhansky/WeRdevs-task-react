@@ -1,6 +1,6 @@
 import React from 'react';
-import Calendar from '../../components/Calendar/Calendar.jsx';
-import Content from '../../components/Content/Content';
+import Calendar from '../../components/HomeContainer/Calendar/Calendar';
+import Content from '../../components/HomeContainer/Content/Content';
 import styles from './Home.module.scss';
 
 const Home = () => {
