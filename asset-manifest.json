@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/WeRdevs-task-react/static/css/main.753a9b57.chunk.css",
-    "main.js": "/WeRdevs-task-react/static/js/main.dded5039.chunk.js",
-    "main.js.map": "/WeRdevs-task-react/static/js/main.dded5039.chunk.js.map",
+    "main.js": "/WeRdevs-task-react/static/js/main.0c6f250f.chunk.js",
+    "main.js.map": "/WeRdevs-task-react/static/js/main.0c6f250f.chunk.js.map",
     "runtime-main.js": "/WeRdevs-task-react/static/js/runtime-main.35112138.js",
     "runtime-main.js.map": "/WeRdevs-task-react/static/js/runtime-main.35112138.js.map",
     "static/js/2.c03ac963.chunk.js": "/WeRdevs-task-react/static/js/2.c03ac963.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.35112138.js",
     "static/js/2.c03ac963.chunk.js",
     "static/css/main.753a9b57.chunk.css",
-    "static/js/main.dded5039.chunk.js"
+    "static/js/main.0c6f250f.chunk.js"
   ]
 }
