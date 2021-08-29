@@ -2,13 +2,16 @@
   background-color: #272829;
   height: calc(100vh - 100px);
   padding: 0 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    height: 100vh;
+  }
 }
 .Container {
   max-width: 300px;
-  margin: 35% auto;
-  @media (max-width: 1280px) {
-    margin: 15% auto;
-  }
+  min-height: 380px;
 }
 .Months {
   width: 100%;
