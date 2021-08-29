@@ -10,7 +10,8 @@
   padding-right: 50px;
   @media (max-width: 768px) {
     justify-content: center;
-    height: 100vh;
+    height: auto;
+    padding: 100px 0;
   }
   @media (max-width: 480px) {
     padding-right: 15px;
